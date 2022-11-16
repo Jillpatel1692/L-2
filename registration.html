@@ -23,34 +23,34 @@
                             <label for="name" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Name
                             </label>
-                            <input required type="text" id="name" name="name" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
+                            <input required type="text" id="pname" name="pname" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                                placeholder="Enter full name"></br>
+                                placeholder="Enter  name"></br>
 
-                            <label for="email" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                            <label for="emailid" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Email
                             </label>
-                            <input required type="email" id="email" name="email" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
+                            <input required type="emailid" id="emailid" name="emailid" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500" placeholder="Enter email"></br>
 
-                            <label for="password" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                            <label for="pass" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Password
                             </label>
-                            <input required type="password" id="password" name="password" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
+                            <input required type="pass" id="pass" name="pass" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                                 placeholder="Enter password"></br>
 
-                            <label for="dob" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                            <label for="bd" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Date of Birth
                             </label>
-                            <input required type="date" id="dob" name="dob" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
+                            <input required type="date" id="bd" name="bd" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"></br>
 
-                            <label for="acceptTerms"
+                            <label for="acceptTerm"
                                 class="text-md w-50 inline-block font-medium leading-5 text-gray-700">
                                 Accept Terms & Conditions
                             </label>
-                            <input required type="checkbox" id="acceptTerms" name="acceptTerms"
+                            <input required type="checkbox" id="acceptTerm" name="acceptTerm"
                                 class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out"></br>
 
                             <button type="submit"
@@ -69,7 +69,7 @@
                 <h2 class="text-3xl text-center font-bold leading-tight">
                     Entries
                 </h2>
-                <div class="divide-y divide-gray-300/50" id="user-entries">
+                <div class="divide-y divide-gray-300/50" id="userentries">
                 </div>
             </div>
         </div>
@@ -89,8 +89,8 @@
         }
         maxDate = yyyy - 18 + '-' + mm + '-' + dd;
         minDate = yyyy - 55 + '-' + mm + '-' + dd;
-        document.getElementById("dob").setAttribute("min", minDate);
-        document.getElementById("dob").setAttribute("max", maxDate);
+        document.getElementById("bd").setAttribute("min", minDate);
+        document.getElementById("bd").setAttribute("max", maxDate);
     
         let userEntries = localStorage.getItem("user-entries");
         if (userEntries) {
@@ -100,18 +100,18 @@
         }
     
         const displayEntries = () => {
-            const savedUserEntries = localStorage.getItem("user-entries");
+            const savedUserEntries = localStorage.getItem("userentries");
             let entries = "";
             if (savedUserEntries) {
                 const parsedUserEntries = JSON.parse(savedUserEntries);
                 entries = parsedUserEntries
                     .map((entry) => {
-                        const name = `<td class='border px-4 py-2'>${entry.name}</td>`;
-                        const email = `<td class='border px-4 py-2'>${entry.email}</td>`;
-                        const password = `<td class='border px-4 py-2'>${entry.password}</td>`;
-                        const dob = `<td class='border px-4 py-2'>${entry.dob}</td>`;
-                        const acceptTerms = `<td class='border px-4 py-2'>${entry.acceptTermsAndConditions}</td>`;
-                        const row = `<tr>${name} ${email} ${password} ${dob} ${acceptTerms}</tr>`;
+                        const pname = `<td class='border px-4 py-2'>${entry.pname}</td>`;
+                        const emailid = `<td class='border px-4 py-2'>${entry.emailid}</td>`;
+                        const pass = `<td class='border px-4 py-2'>${entry.pass}</td>`;
+                        const bd = `<td class='border px-4 py-2'>${entry.bd}</td>`;
+                        const acceptTerm = `<td class='border px-4 py-2'>${entry.acceptTermsAndConditions}</td>`;
+                        const row = `<tr>${npame} ${emailid} ${pass} ${bd} ${acceptTerm}</tr>`;
                         return row;
                     })
                     .join("\n");
@@ -130,21 +130,21 @@
         const saveUserForm = (event) => {
             event.preventDefault();
             event.preventDefault();
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const dob = document.getElementById("dob").value;
+            const pname = document.getElementById("pname").value;
+            const emailid = document.getElementById("emailid").value;
+            const pass = document.getElementById("pass").value;
+            const bd = document.getElementById("bd").value;
             const acceptTermsAndConditions =
-                document.getElementById("acceptTerms").checked;
+                document.getElementById("acceptTerm").checked;
             const userDetails = {
-                name,
-                email,
-                password,
-                dob,
+                pname,
+                emailid,
+                pass,
+                bd,
                 acceptTermsAndConditions,
             };
             userEntries.push(userDetails);
-            localStorage.setItem("user-entries", JSON.stringify(userEntries));
+            localStorage.setItem("userentries", JSON.stringify(userEntries));
     
             displayEntries(); // Add this line
         };
