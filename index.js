@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const args = require("minimist")(process.argv.slice(2));
 
-let homeContent = "";
+let homeContents = "";
 let projectContent = "";
 let registrationFormContent = "";
 
@@ -10,7 +10,7 @@ fs.readFile("home.html", (err, home) => {
   if (err) {
     throw err;
   }
-  homeContent = home;
+  homeContensts = home;
 });
 
 fs.readFile("project.html", (err, project) => {
@@ -41,7 +41,7 @@ http
         response.end();
         break;
       default:
-        response.write(homeContent);
+        response.write(homeContents);
         response.end();
         break;
     }
